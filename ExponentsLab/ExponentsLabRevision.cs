@@ -14,15 +14,28 @@ namespace ExponentsLab
 
             while (goOn == true)
             {
-                string result = GetInput("Please input an integer:");
-                int intResult = int.Parse(result);
+                string result;
+                int intResult = 0;
+                bool invalidAnswer = true;
+                while (invalidAnswer)
+                {
+                    result = GetInput("Please input an integer:");
+                    intResult = int.Parse(result);
+                    if (intResult >= 1291)
+                    {
+                        Console.WriteLine("That integer is over 1290, which breaks the game.");
+                    }
+                    else if (intResult <= 0)
+                    {
+                        Console.WriteLine("You must enter a positive integer.");
+                    }
+                    else
+                    {
+                        invalidAnswer = false;
+                    }
+                }
                 Console.WriteLine($"You entered the number {intResult}.");
                 Console.WriteLine($"Starting from 1 and proceeding up to your number {intResult}, we get the following:");
-
-                //Console.WriteLine($"Number: {intResult}");
-                //Console.WriteLine($"Squared: {GetSquare(intResult)}");
-                //Console.WriteLine($"Cubed: {GetCube(intResult)}");
-
                 {
                     Console.WriteLine("{0, -20} {1,-20} {2, -20}", "Number", "Squared", "Cubed");
                     for (int i = 1; i <= intResult; i++)
